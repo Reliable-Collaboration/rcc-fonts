@@ -1,4 +1,4 @@
-# Install every IBM Plex .ttf and .otf for the CURRENT USER only.
+# Install every .ttf and .otf font in this repo for the CURRENT USER only.
 #
 # Usage (regular non-admin PowerShell is fine):
 #   cd <path-to-repo>

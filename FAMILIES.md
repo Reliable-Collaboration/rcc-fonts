@@ -1,6 +1,6 @@
 # Included families
 
-Sourced from the official [IBM/plex](https://github.com/IBM/plex) GitHub releases (pre-built binaries — no font compilation required). All families are SIL OFL 1.1 licensed.
+Open-source fonts used by The Reliable Collaboration Company across its projects. Currently sourced from the official [IBM/plex](https://github.com/IBM/plex) GitHub releases (pre-built binaries — no font compilation required). All families are SIL OFL 1.1 licensed.
 
 | Folder | Family name (as shown by the OS) | Upstream release |
 |--------|----------------------------------|------------------|

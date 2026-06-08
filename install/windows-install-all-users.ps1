@@ -1,14 +1,19 @@
-# Install every IBM Plex .ttf and .otf in this repo system-wide on Windows.
+# Install every .ttf and .otf font in this repo system-wide on Windows.
 #
 # Usage (must be run from an Administrator PowerShell):
 #   cd <path-to-repo>
 #   powershell -ExecutionPolicy Bypass -File install\windows-install-all-users.ps1
+#   powershell -ExecutionPolicy Bypass -File install\windows-install-all-users.ps1 -Force
 #
 # Behavior:
 #   - Copies files to C:\Windows\Fonts (the all-users location).
 #   - Registers each file in HKLM so it survives a reboot and is visible to
 #     Word, PowerPoint, Adobe Creative Cloud apps, Sketch, Affinity, etc.
-#   - Existing files with the same name are overwritten.
+#   - Skips fonts that are already installed unless -Force is specified.
+
+param(
+    [switch]$Force
+)
 
 #Requires -RunAsAdministrator
 
@@ -30,7 +35,7 @@ Get-ChildItem -Path $fontsRoot -Directory | ForEach-Object {
     @("otf","ttf") | ForEach-Object {
         $dir = Join-Path $family ("fonts\complete\{0}" -f $_)
         if (Test-Path $dir) {
-            Get-ChildItem -Path $dir -File -Include "*.otf","*.ttf" | ForEach-Object { $candidates.Add($_.FullName) }
+            Get-ChildItem -Path "$dir\*" -File -Include "*.otf","*.ttf" | ForEach-Object { $candidates.Add($_.FullName) }
         }
     }
 }
@@ -52,9 +57,15 @@ function Get-FontDisplayName($path) {
 }
 
 $installed = 0
+$skipped = 0
 foreach ($file in $candidates) {
     $name = [System.IO.Path]::GetFileName($file)
     $dest = Join-Path $systemFontDir $name
+
+    if ((Test-Path $dest) -and -not $Force) {
+        $skipped++
+        continue
+    }
 
     Copy-Item -Path $file -Destination $dest -Force
 
@@ -68,5 +79,13 @@ foreach ($file in $candidates) {
     $installed++
 }
 
-Write-Host ("Installed {0} fonts to {1}." -f $installed, $systemFontDir)
-Write-Host "Restart any already-open apps (Word, Photoshop, etc.) to see the new fonts."
+if ($installed -eq 0 -and $skipped -gt 0) {
+    Write-Host ("All {0} fonts are already installed. Use -Force to reinstall." -f $skipped)
+} elseif ($skipped -gt 0) {
+    Write-Host ("Installed {0} fonts to {1}. Skipped {2} already-installed fonts. Use -Force to reinstall all." -f $installed, $systemFontDir, $skipped)
+} else {
+    Write-Host ("Installed {0} fonts to {1}." -f $installed, $systemFontDir)
+}
+if ($installed -gt 0) {
+    Write-Host "Restart any already-open apps (Word, Photoshop, etc.) to see the new fonts."
+}

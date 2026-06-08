@@ -1,6 +1,6 @@
-# IBM Plex fonts — local, self-contained, no-CDN
+# rcc-fonts — The Reliable Collaboration Company font package
 
-Everything you need to install IBM Plex on your machine, use it inside any creative app, and embed it on a website without ever reaching for a CDN. Cloned from the official [IBM/plex](https://github.com/IBM/plex) GitHub releases (pre-built binaries — no font compilation required) and laid out for plug-and-play use.
+A portable, self-contained collection of open-source fonts that [The Reliable Collaboration Company](https://rcc.team) uses across its projects. Currently includes the [IBM Plex](https://github.com/IBM/plex) family. Compiled into a single repo with cross-platform install scripts so the full set can be installed together as a package on any machine — no CDN, no font compilation, no hunting for individual downloads.
 
 Contents:
 
@@ -21,7 +21,7 @@ Contents:
 ## What's in this repo
 
 ```
-ibm-plex-fonts/
+rcc-fonts/
 ├── fonts/                        # one folder per IBM Plex family (11 total)
 │   ├── ibm-plex-sans/            #   Latin/Greek/Cyrillic, the workhorse
 │   ├── ibm-plex-sans-condensed/
@@ -320,4 +320,4 @@ location ~* \.(woff2?|otf|ttf)$ {
 
 IBM Plex is released under the SIL Open Font License 1.1. See [`LICENSE`](LICENSE). You can use, modify, redistribute, and bundle these fonts in personal and commercial work — including embedding in PDFs, websites, apps, and physical print. The only restriction worth knowing is that you can't re-release a modified copy under the "Plex" name without IBM's permission.
 
-This repository is a redistribution of the unmodified, official IBM/plex release binaries. It is not affiliated with or endorsed by IBM.
+This repository is a redistribution of unmodified, official IBM/plex release binaries, packaged by The Reliable Collaboration Company for internal use across its projects. It is not affiliated with or endorsed by IBM.

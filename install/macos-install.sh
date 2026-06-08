@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install every IBM Plex .otf and .ttf in this repo for the current macOS user.
+# Install every .otf and .ttf font in this repo for the current macOS user.
 #
 # Usage:
 #   ./install/macos-install.sh
