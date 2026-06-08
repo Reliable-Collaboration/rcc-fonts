@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IBM Plex — self-hosted</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="ibm-plex.css">
+<style>
+  :root { color-scheme: light dark; --fg:#111; --bg:#fff; --muted:#666; }
+  @media (prefers-color-scheme: dark) { :root { --fg:#eee; --bg:#111; --muted:#888; } }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); }
+  body { font-family: "IBM Plex Sans", system-ui, sans-serif; line-height: 1.5; padding: 3rem 5vw; max-width: 60rem; margin: auto; }
+  h1   { font-family: "IBM Plex Serif"; font-weight: 600; font-size: 3rem; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
+  h2   { font-family: "IBM Plex Sans"; font-weight: 600; font-size: 1.5rem; margin: 3rem 0 0.5rem; }
+  code, pre { font-family: "IBM Plex Mono"; }
+  pre  { background: rgba(127,127,127,0.12); padding: 1rem; overflow: auto; border-radius: 4px; }
+  .muted { color: var(--muted); }
+  .specimen { display: grid; grid-template-columns: 9rem 1fr; gap: 0.5rem 1.5rem; align-items: baseline; }
+  .specimen > span:nth-child(odd) { font-family: "IBM Plex Mono"; font-size: 0.85rem; color: var(--muted); }
+  .specimen > span:nth-child(even) { font-size: 1.5rem; }
+  .condensed   { font-family: "IBM Plex Sans Condensed"; }
+  .serif       { font-family: "IBM Plex Serif"; }
+  .mono        { font-family: "IBM Plex Mono"; }
+  .sans-var    { font-family: "IBM Plex Sans Var"; font-variation-settings: "wght" var(--wght, 400); }
+  .serif-var   { font-family: "IBM Plex Serif Var"; font-variation-settings: "wght" var(--wght, 400); }
+</style>
+</head>
+<body>
+<h1>IBM Plex, self-hosted</h1>
+<p class="muted">If this page renders in Plex, your <code>/fonts/</code> directory is wired up correctly and no external CDN is in play. View source for the bare-minimum HTML.</p>
+
+<h2>Sans weights</h2>
+<div class="specimen">
+  <span>thin (100)</span>        <span style="font-weight:100">The quick brown fox.</span>
+  <span>extralight (200)</span>  <span style="font-weight:200">The quick brown fox.</span>
+  <span>light (300)</span>       <span style="font-weight:300">The quick brown fox.</span>
+  <span>regular (400)</span>     <span style="font-weight:400">The quick brown fox.</span>
+  <span>text (450)</span>        <span style="font-weight:450">The quick brown fox.</span>
+  <span>medium (500)</span>      <span style="font-weight:500">The quick brown fox.</span>
+  <span>semibold (600)</span>    <span style="font-weight:600">The quick brown fox.</span>
+  <span>bold (700)</span>        <span style="font-weight:700">The quick brown fox.</span>
+  <span>italic (400)</span>      <span style="font-style:italic">The quick brown fox.</span>
+</div>
+
+<h2>Other families</h2>
+<div class="specimen">
+  <span>Condensed</span>  <span class="condensed">Compressed for tight headlines.</span>
+  <span>Serif</span>      <span class="serif">Editorial tone, long reading.</span>
+  <span>Mono</span>       <span class="mono">var x: f32 = 1.0_f32;</span>
+  <span>Sans Var</span>   <span class="sans-var" style="--wght:425">Variable: continuous weight axis.</span>
+  <span>Serif Var</span>  <span class="serif-var" style="--wght:425">Variable serif companion.</span>
+</div>
+
+<h2>Embed it on your own site</h2>
+<pre><code>&lt;link rel="stylesheet"
+      href="/assets/ibm-plex-fonts/web/ibm-plex.css"&gt;
+
+&lt;style&gt;
+  body { font-family: "IBM Plex Sans", system-ui, sans-serif; }
+  code { font-family: "IBM Plex Mono", monospace; }
+&lt;/style&gt;</code></pre>
+
+<p class="muted">For Arabic, Hebrew, Devanagari, or Thai, link the per-family CSS in the matching <code>fonts/&lt;family&gt;/css/</code> directory — they ship pre-built by IBM with proper unicode-range subsetting. CJK families aren't bundled in this repo; see <code>FAMILIES.md</code> if you ever need them.</p>
+</body>
+</html>

@@ -1,0 +1,5 @@
+_downloads/
+*.zip.tmp
+.DS_Store
+Thumbs.db
+__MACOSX/
