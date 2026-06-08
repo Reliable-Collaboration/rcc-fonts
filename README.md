@@ -5,6 +5,7 @@ A portable, self-contained collection of open-source fonts that [The Reliable Co
 Contents:
 
 - [Available fonts](#available-fonts)
+- [Preview all fonts](#preview-all-fonts)
 - [What's in this repo](#whats-in-this-repo)
 - [Install on Windows](#install-on-windows)
 - [Install on macOS](#install-on-macos)
@@ -53,6 +54,20 @@ Contents:
 
 ---
 
+## Preview all fonts
+
+Open [`web/font-samples.html`](web/font-samples.html) in a browser to see every font family rendered side by side with weight ramps, size ramps, and sample text.
+
+To regenerate after adding or updating fonts:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\generate-font-samples.ps1
+```
+
+The output is `web/font-samples.html`. It loads fonts directly from the repo via relative paths, so it works with `file://` — no server needed.
+
+---
+
 ## What's in this repo
 
 ```
@@ -92,9 +107,12 @@ rcc-fonts/
 │   ├── windows-install-current-user.ps1
 │   ├── linux-install.sh
 │   └── macos-install.sh
+├── tools/
+│   └── generate-font-samples.ps1 # regenerates web/font-samples.html
 ├── web/
 │   ├── ibm-plex.css              # one stylesheet for Sans/Serif/Mono/Condensed + Vars
-│   └── example.html              # working demo page
+│   ├── example.html              # working demo page
+│   └── font-samples.html         # generated visual gallery of all fonts
 ├── FAMILIES.md                   # full list of included families with version pinning
 ├── LICENSE                       # SIL Open Font License 1.1
 ├── working-journal.md            # log of intentions, decisions, considerations
@@ -405,6 +423,7 @@ Follow this checklist to keep the package consistent as new fonts are added.
 ### Verify
 
 - [ ] **Run an install script** and confirm the new fonts appear in the output count and install correctly.
+- [ ] **Regenerate the sample gallery** — run `powershell -ExecutionPolicy Bypass -File tools\generate-font-samples.ps1` and open `web/font-samples.html` to confirm the new font renders correctly.
 - [ ] **Check the font renders.** Open a document or browser and confirm the font loads by name.
 
 ### Commit
