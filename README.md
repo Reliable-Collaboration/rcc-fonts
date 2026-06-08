@@ -4,6 +4,7 @@ A portable, self-contained collection of open-source fonts that [The Reliable Co
 
 Contents:
 
+- [Available fonts](#available-fonts)
 - [What's in this repo](#whats-in-this-repo)
 - [Install on Windows](#install-on-windows)
 - [Install on macOS](#install-on-macos)
@@ -15,6 +16,23 @@ Contents:
 - [Verify the install worked](#verify-the-install-worked)
 - [Uninstall](#uninstall)
 - [License](#license)
+
+---
+
+## Available fonts
+
+| Font | Weights | Best for |
+|------|---------|----------|
+| **IBM Plex Sans** | Thin through Bold + italics (8 weights) | Body text, UI, presentations, and general-purpose use. The default choice for most projects. |
+| **IBM Plex Sans Condensed** | Thin through Bold + italics (8 weights) | Tables, sidebars, dashboards, and anywhere horizontal space is tight. Pairs naturally with Plex Sans. |
+| **IBM Plex Serif** | Thin through Bold + italics (8 weights) | Long-form reading — reports, proposals, whitepapers. Use for headings alongside Sans body text for visual contrast. |
+| **IBM Plex Mono** | Thin through Bold + italics (8 weights) | Code blocks, terminal output, technical documentation, and editor/IDE font. |
+| **IBM Plex Sans Variable** | Continuous 100–700 axis | Web projects where you need fine-grained weight control or want to minimize file count (one file instead of eight). |
+| **IBM Plex Serif Variable** | Continuous 100–700 axis | Same as above, for serif use cases. |
+
+**Non-Latin scripts** — for multilingual projects, the package also includes Arabic, Hebrew, Devanagari, Thai, and Thai Looped variants of Plex Sans. These share the same metrics as the Latin Sans so they blend seamlessly in mixed-language text. See [`FAMILIES.md`](FAMILIES.md) for the full list with version pins.
+
+**Quick-start recommendation:** Use **Plex Sans** for body text and UI, **Plex Serif** for headings or long-form content, and **Plex Mono** for code. That covers most projects.
 
 ---
 
