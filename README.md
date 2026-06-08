@@ -44,6 +44,8 @@ Contents:
 | **Inter Variable** | Continuous weight axis | Single-file variable version of Inter for web use. |
 | **Nunito** | ExtraLight through Black + italics (variable) | Aside headings, callouts, friendly/approachable UI. Rounded terminals give it a warm feel. Variable-only. |
 | **Rubik** | Light through Black + italics (variable) | Aside headings, callouts, modern geometric feel with slightly rounded corners. Variable-only. |
+| **Liberation Sans** | Regular, Bold + italics (4 styles) | Metrically compatible with Arial. Drop-in replacement for documents that need to match Arial layout without a proprietary font. |
+| **Liberation Serif** | Regular, Bold + italics (4 styles) | Metrically compatible with Times New Roman. Drop-in replacement for documents that need to match TNR layout. |
 
 **Non-Latin scripts** — for multilingual projects, the package also includes Arabic, Hebrew, Devanagari, Thai, and Thai Looped variants of Plex Sans. These share the same metrics as the Latin Sans so they blend seamlessly in mixed-language text. Additional Noto script-specific families can be added individually as needed. See [`FAMILIES.md`](FAMILIES.md) for the full list with version pins.
 
@@ -82,7 +84,9 @@ rcc-fonts/
 │   ├── inter-display/            #   Inter optimized for large sizes
 │   ├── inter-variable/           #   variable version of Inter
 │   ├── nunito/                   #   rounded sans — friendly callouts (variable-only)
-│   └── rubik/                    #   geometric rounded sans — modern callouts (variable-only)
+│   ├── rubik/                    #   geometric rounded sans — modern callouts (variable-only)
+│   ├── liberation-sans/          #   metrically compatible with Arial
+│   └── liberation-serif/         #   metrically compatible with Times New Roman
 ├── install/
 │   ├── windows-install-all-users.ps1
 │   ├── windows-install-current-user.ps1

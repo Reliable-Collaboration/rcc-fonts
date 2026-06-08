@@ -31,6 +31,8 @@ Open-source fonts used by The Reliable Collaboration Company across its projects
 | `fonts/inter-variable/`            | Inter Variable                      | `rsms/inter` [v4.1](https://github.com/rsms/inter/releases/tag/v4.1) |
 | `fonts/nunito/`                    | Nunito (variable)                   | `google/fonts` [ofl/nunito](https://github.com/google/fonts/tree/main/ofl/nunito) |
 | `fonts/rubik/`                     | Rubik (variable)                    | `googlefonts/rubik` [main](https://github.com/googlefonts/rubik) |
+| `fonts/liberation-sans/`           | Liberation Sans                     | `liberationfonts/liberation-fonts` [2.1.5](https://github.com/liberationfonts/liberation-fonts/releases/tag/2.1.5) |
+| `fonts/liberation-serif/`          | Liberation Serif                    | `liberationfonts/liberation-fonts` [2.1.5](https://github.com/liberationfonts/liberation-fonts/releases/tag/2.1.5) |
 
 ## Per-family layout
 
