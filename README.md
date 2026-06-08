@@ -1,6 +1,6 @@
 # rcc-fonts — The Reliable Collaboration Company font package
 
-A portable, self-contained collection of open-source fonts that [The Reliable Collaboration Company](https://rcc.team) uses across its projects. Currently includes the [IBM Plex](https://github.com/IBM/plex) family. Compiled into a single repo with cross-platform install scripts so the full set can be installed together as a package on any machine — no CDN, no font compilation, no hunting for individual downloads.
+A portable, self-contained collection of open-source fonts that [The Reliable Collaboration Company](https://rcc.team) uses across its projects. Currently includes the [IBM Plex](https://github.com/IBM/plex), [Literata](https://github.com/googlefonts/literata), [Noto](https://github.com/notofonts/latin-greek-cyrillic), [Fira](https://github.com/mozilla/Fira), [Inter](https://github.com/rsms/inter), [Nunito](https://fonts.google.com/specimen/Nunito), and [Rubik](https://github.com/googlefonts/rubik) families. Compiled into a single repo with cross-platform install scripts so the full set can be installed together as a package on any machine — no CDN, no font compilation, no hunting for individual downloads.
 
 Contents:
 
@@ -15,6 +15,7 @@ Contents:
 - [Embed on a website without a CDN](#embed-on-a-website-without-a-cdn)
 - [Verify the install worked](#verify-the-install-worked)
 - [Uninstall](#uninstall)
+- [Adding a new font to this repo](#adding-a-new-font-to-this-repo)
 - [License](#license)
 
 ---
@@ -29,10 +30,24 @@ Contents:
 | **IBM Plex Mono** | Thin through Bold + italics (8 weights) | Code blocks, terminal output, technical documentation, and editor/IDE font. |
 | **IBM Plex Sans Variable** | Continuous 100–700 axis | Web projects where you need fine-grained weight control or want to minimize file count (one file instead of eight). |
 | **IBM Plex Serif Variable** | Continuous 100–700 axis | Same as above, for serif use cases. |
+| **Literata** | ExtraLight through Black + italics (8 weights), with optical size variants at 7pt, 36pt, and 72pt | Document titles, headings, and long-form reading. A warm humanist serif with generous x-height — a strong open-source alternative to Sitka or Georgia. |
+| **Literata Variable** | Continuous weight + optical size axes | Web projects needing smooth weight/optical-size interpolation in a single file. |
+| **Noto Sans** | ExtraLight through Black + italics (9 weights), multiple widths | A neutral, highly legible sans-serif with massive Unicode coverage. Good default when brand-neutrality matters. |
+| **Noto Serif** | ExtraLight through Black + italics (9 weights), multiple widths | Neutral serif counterpart to Noto Sans. Reports, proposals, and formal documents. |
+| **Noto Sans Mono** | ExtraLight through Black (9 weights), multiple widths | Monospace for code and terminal output. Broader weight range than Plex Mono. |
+| **Noto Color Emoji** | Single weight (color bitmap) | Consistent cross-platform emoji rendering in web and desktop projects. |
+| **Noto Sans/Serif/Mono Variable** | Continuous weight + width axes | Single-file variable versions of the above for web use. |
+| **Fira Sans** | Hair through Heavy + italics (16 weights) | Technical documentation, aside headings, UI with a slightly condensed feel. Designed by Mozilla. Full OTF + TTF + WOFF2. |
+| **Fira Mono** | Regular, Medium, Bold | Monospace for code. Pairs naturally with Fira Sans. |
+| **Inter** | Thin through Black + italics (9 weights) | UI, dashboards, and web apps. Designed for screens with excellent hinting. Full OTF + TTF + WOFF2. |
+| **Inter Display** | Thin through Black + italics (9 weights) | Same as Inter but optimized for larger sizes (headings, titles). |
+| **Inter Variable** | Continuous weight axis | Single-file variable version of Inter for web use. |
+| **Nunito** | ExtraLight through Black + italics (variable) | Aside headings, callouts, friendly/approachable UI. Rounded terminals give it a warm feel. Variable-only. |
+| **Rubik** | Light through Black + italics (variable) | Aside headings, callouts, modern geometric feel with slightly rounded corners. Variable-only. |
 
-**Non-Latin scripts** — for multilingual projects, the package also includes Arabic, Hebrew, Devanagari, Thai, and Thai Looped variants of Plex Sans. These share the same metrics as the Latin Sans so they blend seamlessly in mixed-language text. See [`FAMILIES.md`](FAMILIES.md) for the full list with version pins.
+**Non-Latin scripts** — for multilingual projects, the package also includes Arabic, Hebrew, Devanagari, Thai, and Thai Looped variants of Plex Sans. These share the same metrics as the Latin Sans so they blend seamlessly in mixed-language text. Additional Noto script-specific families can be added individually as needed. See [`FAMILIES.md`](FAMILIES.md) for the full list with version pins.
 
-**Quick-start recommendation:** Use **Plex Sans** for body text and UI, **Plex Serif** for headings or long-form content, and **Plex Mono** for code. That covers most projects.
+**Quick-start recommendation:** Use **Plex Sans** or **Noto Sans** for body text and UI, **Literata** or **Plex Serif** for headings and long-form content, **Plex Mono** or **Noto Sans Mono** for code, and **Nunito**, **Rubik**, or **Fira Sans** for aside/callout headings.
 
 ---
 
@@ -40,7 +55,7 @@ Contents:
 
 ```
 rcc-fonts/
-├── fonts/                        # one folder per IBM Plex family (11 total)
+├── fonts/                        # one folder per font family
 │   ├── ibm-plex-sans/            #   Latin/Greek/Cyrillic, the workhorse
 │   ├── ibm-plex-sans-condensed/
 │   ├── ibm-plex-sans-variable/   #   single-file variable axis (100..700)
@@ -51,7 +66,23 @@ rcc-fonts/
 │   ├── ibm-plex-sans-hebrew/
 │   ├── ibm-plex-sans-devanagari/
 │   ├── ibm-plex-sans-thai/
-│   └── ibm-plex-sans-thai-looped/
+│   ├── ibm-plex-sans-thai-looped/
+│   ├── literata/                 #   humanist serif — titles, headings, long-form
+│   ├── literata-variable/        #   variable axes: weight + optical size
+│   ├── noto-sans/                #   neutral sans-serif, broad Unicode coverage
+│   ├── noto-sans-variable/
+│   ├── noto-serif/               #   neutral serif counterpart
+│   ├── noto-serif-variable/
+│   ├── noto-sans-mono/           #   monospace for code
+│   ├── noto-sans-mono-variable/
+│   ├── noto-color-emoji/         #   color emoji
+│   ├── fira-sans/                #   Mozilla's humanist sans — technical docs, aside headings
+│   ├── fira-mono/                #   monospace companion to Fira Sans
+│   ├── inter/                    #   UI-optimized sans-serif
+│   ├── inter-display/            #   Inter optimized for large sizes
+│   ├── inter-variable/           #   variable version of Inter
+│   ├── nunito/                   #   rounded sans — friendly callouts (variable-only)
+│   └── rubik/                    #   geometric rounded sans — modern callouts (variable-only)
 ├── install/
 │   ├── windows-install-all-users.ps1
 │   ├── windows-install-current-user.ps1
@@ -66,7 +97,7 @@ rcc-fonts/
 └── README.md                     # you are here
 ```
 
-Each family folder mirrors the official IBM release layout — `fonts/complete/{otf,ttf,woff,woff2}` plus `css/` and `scss/` with pre-built stylesheets pointing at relative paths. See [`FAMILIES.md`](FAMILIES.md) for full details and version pins.
+Each family folder stores font files under `fonts/complete/{otf,ttf,woff,woff2}` (not every format is available for every family). IBM Plex families also include `css/` and `scss/` with pre-built stylesheets. See [`FAMILIES.md`](FAMILIES.md) for full details and version pins.
 
 Repository size: about **75 MB** on disk. CJK (Chinese/Japanese/Korean) families are not included — they would add ~1.4 GB and aren't useful for English-language work. If you need them later, see [Adding CJK later](FAMILIES.md#adding-cjk-chinese--japanese--korean-later) for a one-shot script that drops them in.
 
@@ -334,8 +365,52 @@ location ~* \.(woff2?|otf|ttf)$ {
 
 ---
 
+## Adding a new font to this repo
+
+Follow this checklist to keep the package consistent as new fonts are added.
+
+### Pre-flight
+
+- [ ] **Confirm the license.** Only SIL OFL 1.1 (or equivalently permissive) fonts may be added. Read the license text before proceeding.
+- [ ] **Identify the canonical source.** Record the upstream repository URL and the exact release tag or version number you are pulling from.
+- [ ] **Check for conflicts.** Make sure no existing family in `fonts/` already covers this use case — prefer adding weights to an existing family over adding a new one.
+
+### Add the font files
+
+- [ ] **Create the family directory** under `fonts/` using a lowercase-kebab-case name (e.g. `fonts/source-serif-pro/`). If the font has a separate variable version, create a sibling `fonts/<name>-variable/` directory.
+- [ ] **Organize by format** using the standard layout:
+  ```
+  fonts/<family>/
+  ├── LICENSE.txt          # the font's license, copied verbatim from upstream
+  └── fonts/
+      └── complete/
+          ├── otf/         # if available
+          ├── ttf/         # if available
+          ├── woff/        # if available
+          └── woff2/       # if available
+  ```
+  Not every font ships every format — include what's available and skip the rest.
+- [ ] **Copy the license file** from upstream into `fonts/<family>/LICENSE.txt`. Do not modify it.
+
+### Update documentation
+
+- [ ] **FAMILIES.md** — add a row to the table with: folder name, OS display name, upstream release identifier, and source URL.
+- [ ] **README.md — Available fonts table** — add a row with: font name, weights/styles, and a "Best for" description.
+- [ ] **README.md — directory tree** — add the new folder(s) to the tree diagram in "What's in this repo."
+
+### Verify
+
+- [ ] **Run an install script** and confirm the new fonts appear in the output count and install correctly.
+- [ ] **Check the font renders.** Open a document or browser and confirm the font loads by name.
+
+### Commit
+
+- [ ] **Commit with a message** that names the font, version, and source (e.g. `Add Literata v3.103 from googlefonts/literata`).
+
+---
+
 ## License
 
-IBM Plex is released under the SIL Open Font License 1.1. See [`LICENSE`](LICENSE). You can use, modify, redistribute, and bundle these fonts in personal and commercial work — including embedding in PDFs, websites, apps, and physical print. The only restriction worth knowing is that you can't re-release a modified copy under the "Plex" name without IBM's permission.
+All fonts in this repository are released under the SIL Open Font License 1.1. See [`LICENSE`](LICENSE) and the individual `LICENSE.txt` files in each font family directory. You can use, modify, redistribute, and bundle these fonts in personal and commercial work — including embedding in PDFs, websites, apps, and physical print.
 
-This repository is a redistribution of unmodified, official IBM/plex release binaries, packaged by The Reliable Collaboration Company for internal use across its projects. It is not affiliated with or endorsed by IBM.
+This repository is a redistribution of unmodified, official release binaries from their respective upstream projects, packaged by The Reliable Collaboration Company for internal use. It is not affiliated with or endorsed by IBM or Google.

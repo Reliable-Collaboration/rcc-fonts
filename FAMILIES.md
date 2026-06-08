@@ -15,6 +15,22 @@ Open-source fonts used by The Reliable Collaboration Company across its projects
 | `fonts/ibm-plex-sans-devanagari/`  | IBM Plex Sans Devanagari            | `@ibm/plex-sans-devanagari@1.1.0` |
 | `fonts/ibm-plex-sans-thai/`        | IBM Plex Sans Thai                  | `@ibm/plex-sans-thai@1.1.0` |
 | `fonts/ibm-plex-sans-thai-looped/` | IBM Plex Sans Thai Looped           | `@ibm/plex-sans-thai-looped@1.1.0` |
+| `fonts/literata/`                  | Literata                            | `googlefonts/literata` [v3.103](https://github.com/googlefonts/literata/releases/tag/3.103) |
+| `fonts/literata-variable/`         | Literata Variable                   | `googlefonts/literata` [v3.103](https://github.com/googlefonts/literata/releases/tag/3.103) |
+| `fonts/noto-sans/`                 | Noto Sans                           | `notofonts/latin-greek-cyrillic` [NotoSans-v2.015](https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSans-v2.015) |
+| `fonts/noto-sans-variable/`        | Noto Sans Variable                  | `notofonts/latin-greek-cyrillic` [NotoSans-v2.015](https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSans-v2.015) |
+| `fonts/noto-serif/`                | Noto Serif                          | `notofonts/latin-greek-cyrillic` [NotoSerif-v2.015](https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSerif-v2.015) |
+| `fonts/noto-serif-variable/`       | Noto Serif Variable                 | `notofonts/latin-greek-cyrillic` [NotoSerif-v2.015](https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSerif-v2.015) |
+| `fonts/noto-sans-mono/`            | Noto Sans Mono                      | `notofonts/latin-greek-cyrillic` [NotoSansMono-v2.014](https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSansMono-v2.014) |
+| `fonts/noto-sans-mono-variable/`   | Noto Sans Mono Variable             | `notofonts/latin-greek-cyrillic` [NotoSansMono-v2.014](https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSansMono-v2.014) |
+| `fonts/noto-color-emoji/`          | Noto Color Emoji                    | `googlefonts/noto-emoji` [v2.051](https://github.com/googlefonts/noto-emoji/releases/tag/v2.051) |
+| `fonts/fira-sans/`                 | Fira Sans                           | `mozilla/Fira` [4.202](https://github.com/mozilla/Fira/releases/tag/4.202) |
+| `fonts/fira-mono/`                 | Fira Mono                           | `mozilla/Fira` [4.202](https://github.com/mozilla/Fira/releases/tag/4.202) |
+| `fonts/inter/`                     | Inter                               | `rsms/inter` [v4.1](https://github.com/rsms/inter/releases/tag/v4.1) |
+| `fonts/inter-display/`             | Inter Display                       | `rsms/inter` [v4.1](https://github.com/rsms/inter/releases/tag/v4.1) |
+| `fonts/inter-variable/`            | Inter Variable                      | `rsms/inter` [v4.1](https://github.com/rsms/inter/releases/tag/v4.1) |
+| `fonts/nunito/`                    | Nunito (variable)                   | `google/fonts` [ofl/nunito](https://github.com/google/fonts/tree/main/ofl/nunito) |
+| `fonts/rubik/`                     | Rubik (variable)                    | `googlefonts/rubik` [main](https://github.com/googlefonts/rubik) |
 
 ## Per-family layout
 
