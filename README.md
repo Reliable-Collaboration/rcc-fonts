@@ -56,12 +56,15 @@ Contents:
 
 ## Preview all fonts
 
-Open [`web/font-samples.html`](web/font-samples.html) in a browser to see every font family rendered side by side with weight ramps, size ramps, and sample text.
+**Online:** <https://reliable-collaboration.github.io/rcc-fonts/> — the gallery is regenerated and published to GitHub Pages by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every push to `main` that touches `fonts/`, `web/`, or the build tooling. The `test` branch publishes the same way to <https://reliable-collaboration.github.io/rcc-fonts/test/>, so changes can be previewed before they land on `main`.
+
+**Locally:** open [`web/font-samples.html`](web/font-samples.html) in a browser to see every font family rendered side by side with weight ramps, size ramps, and sample text.
 
 To regenerate after adding or updating fonts:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools\generate-font-samples.ps1
+powershell -ExecutionPolicy Bypass -File tools\generate-font-samples.ps1   # Windows
+pwsh tools/generate-font-samples.ps1                                    # macOS / Linux
 ```
 
 The output is `web/font-samples.html`. It loads fonts directly from the repo via relative paths, so it works with `file://` — no server needed.
@@ -108,7 +111,8 @@ rcc-fonts/
 │   ├── linux-install.sh
 │   └── macos-install.sh
 ├── tools/
-│   └── generate-font-samples.ps1 # regenerates web/font-samples.html
+│   ├── generate-font-samples.ps1 # regenerates web/font-samples.html
+│   └── build-pages-site.sh       # assembles the GitHub Pages site (used by CI)
 ├── web/
 │   ├── ibm-plex.css              # one stylesheet for Sans/Serif/Mono/Condensed + Vars
 │   ├── example.html              # working demo page

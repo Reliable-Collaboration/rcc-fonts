@@ -2,6 +2,7 @@
 #
 # Usage:
 #   powershell -ExecutionPolicy Bypass -File tools\generate-font-samples.ps1
+#   pwsh tools/generate-font-samples.ps1        (macOS / Linux / CI)
 #
 # Output:
 #   web/font-samples.html — open directly in a browser (file://) or via a local server.
@@ -12,7 +13,7 @@
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $fontsRoot = Join-Path $repoRoot "fonts"
-$outputFile = Join-Path $repoRoot "web\font-samples.html"
+$outputFile = Join-Path $repoRoot "web/font-samples.html"
 
 $weightMap = @{
     "Thin"       = 100; "Hair"       = 100; "Hairline"   = 100
@@ -72,15 +73,15 @@ Get-ChildItem -Path $fontsRoot -Directory | Sort-Object Name | ForEach-Object {
     $famName = $_.Name
     $displayName = Get-DisplayName $famName
 
-    $ttfDir = Join-Path $famDir "fonts\complete\ttf"
-    $otfDir = Join-Path $famDir "fonts\complete\otf"
+    $ttfDir = Join-Path $famDir "fonts/complete/ttf"
+    $otfDir = Join-Path $famDir "fonts/complete/otf"
 
     $fontFiles = @()
     if (Test-Path $ttfDir) {
-        $fontFiles += Get-ChildItem -Path "$ttfDir\*" -File -Include "*.ttf"
+        $fontFiles += Get-ChildItem -Path (Join-Path $ttfDir "*") -File -Include "*.ttf"
     }
     if ($fontFiles.Count -eq 0 -and (Test-Path $otfDir)) {
-        $fontFiles += Get-ChildItem -Path "$otfDir\*" -File -Include "*.otf"
+        $fontFiles += Get-ChildItem -Path (Join-Path $otfDir "*") -File -Include "*.otf"
     }
 
     if ($fontFiles.Count -eq 0) { return }

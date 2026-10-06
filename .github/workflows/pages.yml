@@ -1,0 +1,98 @@
+# Regenerates the font sample gallery and publishes it to GitHub Pages.
+#
+# A repo has a single Pages site, so every deploy publishes both branches:
+#   main -> https://<owner>.github.io/rcc-fonts/
+#   test -> https://<owner>.github.io/rcc-fonts/test/
+# A push to either branch rebuilds both, so the site always holds the latest
+# of each. The test/ section is omitted while the test branch doesn't exist.
+
+name: Publish font preview
+
+on:
+  push:
+    branches: [main, test]
+    paths:
+      - "fonts/**"
+      - "web/**"
+      - "tools/generate-font-samples.ps1"
+      - "tools/build-pages-site.sh"
+      - ".github/workflows/pages.yml"
+  pull_request:
+    paths:
+      - "fonts/**"
+      - "web/**"
+      - "tools/generate-font-samples.ps1"
+      - "tools/build-pages-site.sh"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Deploys from main and test share one queue; since each run publishes both
+# branches, a newer run can safely supersede an older one. PRs build separately.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # The triggering commit is built as-is (it is main, test, or a PR).
+      - uses: actions/checkout@v4
+        with:
+          path: current
+
+      - name: Check for the other branch
+        id: other
+        run: |
+          case "$GITHUB_REF" in
+            refs/heads/test) other=main ;;
+            refs/heads/main) other=test ;;
+            *)               other= ;;   # PRs and manual runs elsewhere: build only this commit
+          esac
+          if [ -n "$other" ] && git -C current ls-remote --exit-code --heads origin "$other" >/dev/null; then
+            echo "branch=$other" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.other.outputs.branch != ''
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.other.outputs.branch }}
+          path: other
+
+      - name: Generate web/font-samples.html
+        shell: pwsh
+        run: |
+          ./current/tools/generate-font-samples.ps1
+          if (Test-Path other) { ./other/tools/generate-font-samples.ps1 }
+
+      - name: Assemble site
+        run: |
+          if [ "$GITHUB_REF" = refs/heads/test ]; then
+            main_dir=other; test_dir=current
+          else
+            main_dir=current; test_dir=other
+          fi
+          [ -d "$main_dir" ] && current/tools/build-pages-site.sh "$main_dir" _site
+          [ -d "$test_dir" ] && current/tools/build-pages-site.sh "$test_dir" _site/test
+          du -sh _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
